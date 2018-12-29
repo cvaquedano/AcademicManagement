@@ -5,7 +5,7 @@ namespace AcademicManagement.Domain.Entities.BaseEntities
     public class Person
     {
        
-        public string Name { get; set; }
+        public string FirstName { get; set; }
        
         public string LastName { get; set; }
       
@@ -15,7 +15,7 @@ namespace AcademicManagement.Domain.Entities.BaseEntities
 
         public string NombreCompleto()
         {
-            return Name + " " + LastName;
+            return FirstName + " " + LastName;
         }
     }
 }
