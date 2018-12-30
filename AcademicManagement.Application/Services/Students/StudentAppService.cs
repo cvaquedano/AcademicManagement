@@ -15,36 +15,29 @@ namespace AcademicManagement.Application.Services.Students
 
         public StudentAppService()
         {
-            var context = new ApplicationDbContext();
-            _unitOfWork = new UnitOfWork(context);
+            _unitOfWork = new UnitOfWork(new ApplicationDbContext());
         }
+     
 
-       
-
-        private void Commit()
-        {
-            _unitOfWork.Commit();
-        }
-
-        public StudentDto CreateStudent(StudentDto student)
+        public StudentDto Create(StudentDto item)
         {
             var newStudent = new Student
             {
-                FirstName = student.FirstName,
-                LastName = student.LastName,
-                BirthDate = student.BirthDate,
-                Gender = student.Gender,
-                IsRightHanded = student.IsRightHanded
+                FirstName = item.FirstName,
+                LastName = item.LastName,
+                BirthDate = item.BirthDate,
+                Gender = item.Gender,
+                IsRightHanded = item.IsRightHanded
             };
             _unitOfWork.Students.Add(newStudent);
 
-            student.StudentId = newStudent.StudentId;
+            item.StudentId = newStudent.StudentId;
 
-            Commit();
-            return student;
+            _unitOfWork.Commit();
+            return item;
         }
 
-        public StudentDto DeleteStudent(int id)
+        public StudentDto Delete(int id)
         {
             var student= _unitOfWork.Students.GetById(id);
             var studentDto = new StudentDto();
@@ -55,11 +48,11 @@ namespace AcademicManagement.Application.Services.Students
                 return studentDto;
             }
              _unitOfWork.Students.Delete(student);
-            Commit();
+            _unitOfWork.Commit();
             return studentDto;
         }
 
-        public StudentDto GetStudentById(int id)
+        public StudentDto GetById(int id)
         {
             var student =  _unitOfWork.Students.GetById(id);
             var studentDto = new StudentDto();
@@ -73,7 +66,7 @@ namespace AcademicManagement.Application.Services.Students
 
         }
 
-        public List<StudentDto> GetStudents()
+        public List<StudentDto> GetAll()
         {
             var students= _unitOfWork.Students.GetAll().ToList();
           
@@ -82,7 +75,7 @@ namespace AcademicManagement.Application.Services.Students
 
         }
 
-        public StudentDto UpdateStudent(int id,StudentDto student)
+        public StudentDto Update(int id,StudentDto student)
         {
             var studentOnDB =  _unitOfWork.Students.GetById(id);
 
@@ -96,9 +89,17 @@ namespace AcademicManagement.Application.Services.Students
             studentOnDB.BirthDate = student.BirthDate;
             studentOnDB.Gender = student.Gender;
             studentOnDB.IsRightHanded = student.IsRightHanded;
-            Commit();
+
+            _unitOfWork.Commit();
 
             return student;
         }
+
+     
+      
+
+      
+
+       
     }
 }

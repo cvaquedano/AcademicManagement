@@ -31,6 +31,12 @@ namespace AcademicManagement.Persistence.Repositories
             _context.Students.Remove(item);
         }
 
+        public IEnumerable<Student> Find(string query)
+        {
+
+            return _context.Students.Where(t => t.FirstName.Contains(query) || t.LastName.Contains(query));
+        }
+
         public IEnumerable<Student> GetAll()
         {
             return _context.Students;

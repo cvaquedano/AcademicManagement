@@ -47,12 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTOs\BaseDto.cs" />
+    <Compile Include="DTOs\Core\BaseDto.cs" />
+    <Compile Include="DTOs\Core\PersonDto.cs" />
     <Compile Include="DTOs\StudentDto.cs" />
+    <Compile Include="DTOs\TeacherDto.cs" />
     <Compile Include="MappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IBaseAppService.cs" />
     <Compile Include="Services\Students\IStudentAppService.cs" />
     <Compile Include="Services\Students\StudentAppService.cs" />
+    <Compile Include="Services\Teachers\ITeacherAppService.cs" />
+    <Compile Include="Services\Teachers\TeacherAppService.cs" />
     <Compile Include="StartUp.cs" />
   </ItemGroup>
   <ItemGroup>

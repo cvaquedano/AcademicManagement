@@ -6,5 +6,6 @@ namespace AcademicManagement.Domain.Repository
     public interface IApplicationDbContext
     {
         DbSet<Student> Students { get; set; }
+        DbSet<Teacher> Teachers { get; set; }
     }
 }

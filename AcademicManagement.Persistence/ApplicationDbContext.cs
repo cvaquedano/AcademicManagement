@@ -12,6 +12,7 @@ namespace AcademicManagement.Persistence
     public class ApplicationDbContext: DbContext, IApplicationDbContext
     {
         public DbSet<Student> Students { get; set; }
+        public DbSet<Teacher> Teachers { get ; set; }
 
         public ApplicationDbContext() : base("AcademicManagementConnection")
         {

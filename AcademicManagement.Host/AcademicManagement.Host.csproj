@@ -127,9 +127,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="UnityResolver.cs" />
+    <Compile Include="DependencyResolver\UnityResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

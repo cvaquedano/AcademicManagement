@@ -12,7 +12,7 @@ namespace AcademicManagement.Application
             var config = new MapperConfiguration(cfg => {
 
                 cfg.CreateMap<Student, StudentDto>();//.ForMember(s=>s.ErrorMessage,q=>q.Ignore());
-                
+                cfg.CreateMap<Teacher, TeacherDto>();
             });
 
             config.CreateMapper();

@@ -3,15 +3,8 @@ using System.Collections.Generic;
 
 namespace AcademicManagement.Application.Services.Students
 {
-    public interface IStudentAppService
+    public interface IStudentAppService: IBaseAppService<StudentDto>
     {
-        List<StudentDto> GetStudents();
-        StudentDto GetStudentById(int id);
-        StudentDto CreateStudent(StudentDto student);
-
-        StudentDto UpdateStudent(int id, StudentDto student);
-        StudentDto DeleteStudent(int id);
-
 
     }
 }
