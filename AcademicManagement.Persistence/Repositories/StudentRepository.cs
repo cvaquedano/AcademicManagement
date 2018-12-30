@@ -1,4 +1,5 @@
-﻿using AcademicManagement.Domain.Entities;
+﻿using AcademicManagement.Domain.Core;
+using AcademicManagement.Domain.Entities;
 using AcademicManagement.Domain.Repository;
 using System;
 using System.Collections.Generic;
@@ -11,13 +12,23 @@ namespace AcademicManagement.Persistence.Repositories
     public class StudentRepository : IStudentRepository
     {
         private readonly IApplicationDbContext _context;
+
+       
+
         public StudentRepository(ApplicationDbContext context)
         {
             _context = context;
         }
+
+
         public void Add(Student item)
         {
             _context.Students.Add(item);
+        }
+
+        public void Delete(Student item)
+        {
+            _context.Students.Remove(item);
         }
 
         public IEnumerable<Student> GetAll()
@@ -29,5 +40,7 @@ namespace AcademicManagement.Persistence.Repositories
         {
             return _context.Students.FirstOrDefault(s => s.StudentId == Id);
         }
+
+       
     }
 }

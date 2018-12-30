@@ -8,6 +8,6 @@ namespace AcademicManagement.Application.DTOs
 {
     public class BaseDto
     {
-        public string ErrorMessage { get; set; }
+       // public string ErrorMessage { get; set; }
     }
 }

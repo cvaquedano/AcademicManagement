@@ -11,10 +11,10 @@ namespace AcademicManagement.Application.DTOs
         public int StudentId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime BirthDay { get; set; }
-        public bool Genre { get; set; }
+        public DateTime BirthDate { get; set; }
+        public bool Gender { get; set; }
         public bool IsRightHanded { get; set; }
 
-       
+
     }
 }

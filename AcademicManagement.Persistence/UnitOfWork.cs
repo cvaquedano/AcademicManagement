@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 
 namespace AcademicManagement.Persistence
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext _context;
-
         public IStudentRepository Students { get; private set; }
 
         public UnitOfWork(ApplicationDbContext context)
@@ -21,8 +20,6 @@ namespace AcademicManagement.Persistence
             Students = new StudentRepository(context);
 
         }
-
-      
 
         public void Commit()
         {

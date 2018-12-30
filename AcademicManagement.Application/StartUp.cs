@@ -2,12 +2,12 @@
 using System.Web;
 using AcademicManagement.Application;
 
-[assembly: PreApplicationStartMethod(typeof(StartUp), "Start")]
+[assembly: PreApplicationStartMethod(type: typeof(StartUp), methodName: "Start")]
 namespace AcademicManagement.Application
 {
     public static class StartUp
     {
-        static void Start()
+        public static void Start()
         {
             Mapper.Initialize(t => t.AddProfile<MappingProfile>());
         }

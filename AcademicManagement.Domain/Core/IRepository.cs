@@ -8,6 +8,7 @@ namespace AcademicManagement.Domain.Core
         T GetById(int Id);
         void Add(T item);
         void Delete(T item);
-        IUnitOfWork UnitOfWork { get; }
+
+
     }
 }

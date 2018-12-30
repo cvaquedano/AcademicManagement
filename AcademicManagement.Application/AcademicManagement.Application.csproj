@@ -60,6 +60,10 @@
       <Project>{50ADF7C2-A485-480F-9BF5-11768D224B4F}</Project>
       <Name>AcademicManagement.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AcademicManagement.Persistence\AcademicManagement.Persistence.csproj">
+      <Project>{153388E3-3502-4DBA-9447-678F96D9A52E}</Project>
+      <Name>AcademicManagement.Persistence</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

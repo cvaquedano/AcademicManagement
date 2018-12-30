@@ -9,7 +9,7 @@ namespace AcademicManagement.Application.Services.Students
         StudentDto GetStudentById(int id);
         StudentDto CreateStudent(StudentDto student);
 
-        StudentDto UpdateStudent(StudentDto student);
+        StudentDto UpdateStudent(int id, StudentDto student);
         StudentDto DeleteStudent(int id);
 
 

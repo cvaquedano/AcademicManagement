@@ -8,11 +8,12 @@ namespace AcademicManagement.Application
     {
         public MappingProfile()
         {
-            var config = new MapperConfiguration(cfg => {
-               
-                cfg.CreateMap<Student, StudentDto>();
-            });
 
+            var config = new MapperConfiguration(cfg => {
+
+                cfg.CreateMap<Student, StudentDto>();//.ForMember(s=>s.ErrorMessage,q=>q.Ignore());
+                
+            });
 
             config.CreateMapper();
 
