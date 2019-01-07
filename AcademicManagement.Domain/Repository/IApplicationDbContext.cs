@@ -7,5 +7,6 @@ namespace AcademicManagement.Domain.Repository
     {
         DbSet<Student> Students { get; set; }
         DbSet<Teacher> Teachers { get; set; }
+        DbSet<Asignature> Asignatures { get; set; }
     }
 }

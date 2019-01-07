@@ -95,11 +95,10 @@ namespace AcademicManagement.Application.Services.Students
             return student;
         }
 
-     
-      
-
-      
-
-       
+        public List<StudentDto> Find(string query)
+        {
+            var students = _unitOfWork.Students.Find(query).ToList();
+            return Mapper.Map<List<Student>, List<StudentDto>>(students);
+        }
     }
 }

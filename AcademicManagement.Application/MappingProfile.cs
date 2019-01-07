@@ -13,6 +13,7 @@ namespace AcademicManagement.Application
 
                 cfg.CreateMap<Student, StudentDto>();//.ForMember(s=>s.ErrorMessage,q=>q.Ignore());
                 cfg.CreateMap<Teacher, TeacherDto>();
+                cfg.CreateMap<Asignature, AsignatureDto>();
             });
 
             config.CreateMapper();

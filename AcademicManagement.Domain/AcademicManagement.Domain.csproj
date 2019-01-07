@@ -49,11 +49,15 @@
   <ItemGroup>
     <Compile Include="Core\IRepository.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Entities\Asignature.cs" />
     <Compile Include="Entities\BaseEntities\Person.cs" />
+    <Compile Include="Entities\Courses\Course.cs" />
+    <Compile Include="Entities\Courses\CourseDetail.cs" />
     <Compile Include="Entities\Student.cs" />
     <Compile Include="Entities\Teacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IApplicationDbContext.cs" />
+    <Compile Include="Repository\IAsignatureRepository.cs" />
     <Compile Include="Repository\IStudentRepository.cs" />
     <Compile Include="Repository\ITeacherRepository.cs" />
   </ItemGroup>

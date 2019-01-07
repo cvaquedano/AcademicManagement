@@ -53,10 +53,15 @@ namespace AcademicManagement.Application.Services.Teachers
             return teacherDto;
         }
 
+        public List<TeacherDto> Find(string query)
+        {
+            var teachers = _unitOfWork.Teachers.Find(query).ToList();
+            return Mapper.Map<List<Teacher>, List<TeacherDto>>(teachers);
+        }
+
         public List<TeacherDto> GetAll()
         {
             var teachers = _unitOfWork.Teachers.GetAll().ToList();
-
 
             return Mapper.Map<List<Teacher>, List<TeacherDto>>(teachers);
         }

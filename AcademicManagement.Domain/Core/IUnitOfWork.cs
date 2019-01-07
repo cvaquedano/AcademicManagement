@@ -6,7 +6,8 @@ namespace AcademicManagement.Domain.Core
     {
         ITeacherRepository Teachers { get; }
         IStudentRepository Students { get; }
-      
+        IAsignatureRepository Asignatures { get; }
+
 
         void Commit();
     }

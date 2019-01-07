@@ -10,8 +10,9 @@ namespace AcademicManagement.Application.Services
     {
         List<T> GetAll();
         T GetById(int id);
-        T Create(T student);
+        T Create(T item);
         T Update(int id, T item);
         T Delete(int id);
+        List<T> Find(string query);
     }
 }
