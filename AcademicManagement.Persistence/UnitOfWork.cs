@@ -12,12 +12,19 @@ namespace AcademicManagement.Persistence
         public ITeacherRepository Teachers { get; private set; }
         public IAsignatureRepository Asignatures { get; private set; }
 
+        public ICourseRepository Courses { get; private set; }
+        public ICourseDetailsRepository CourseDetails { get; private set; }
+
+
+
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
             Students = new StudentRepository(context);
             Teachers = new TeacherRepository(context);
             Asignatures = new AsignatureRepository(context);
+            Courses = new CourseRepository(context);
+            CourseDetails = new CourseDetailsRepository(context);
 
         }
 

@@ -64,9 +64,15 @@
     <Compile Include="Migrations\201812310208554_AddAsignatureTable.Designer.cs">
       <DependentUpon>201812310208554_AddAsignatureTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901092243483_addcoursesTables.cs" />
+    <Compile Include="Migrations\201901092243483_addcoursesTables.Designer.cs">
+      <DependentUpon>201901092243483_addcoursesTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AsignatureRepository.cs" />
+    <Compile Include="Repositories\CourseDetailsRepository.cs" />
+    <Compile Include="Repositories\CourseRepository.cs" />
     <Compile Include="Repositories\StudentRepository.cs" />
     <Compile Include="Repositories\TeacherRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
@@ -93,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812310208554_AddAsignatureTable.resx">
       <DependentUpon>201812310208554_AddAsignatureTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901092243483_addcoursesTables.resx">
+      <DependentUpon>201901092243483_addcoursesTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

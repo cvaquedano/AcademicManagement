@@ -1,10 +1,5 @@
 ﻿using AcademicManagement.Application.DTOs;
 using AcademicManagement.Application.Services.Teachers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace AcademicManagement.Host.Controllers
@@ -48,7 +43,7 @@ namespace AcademicManagement.Host.Controllers
             return Ok(resulto);
         }
 
-        [HttpPost]
+        [HttpPut]
         public IHttpActionResult Update(int id, TeacherDto teacherDto)
         {
             var resulto = _teacherAppService.Update(id, teacherDto);
