@@ -4,19 +4,18 @@ using AcademicManagement.Application.DTOs.Course;
 using AcademicManagement.Domain.Core;
 using AcademicManagement.Domain.Entities.Courses;
 using AcademicManagement.Persistence;
-using AutoMapper;
+
 
 namespace AcademicManagement.Application.Services.Courses
 {
     public class CourseAppService : ICourseAppService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly MyMapping Map;
-        private object p;
+        private readonly MyMapping Map;      
 
-        public CourseAppService()
+        public CourseAppService(IUnitOfWork unitOfWork)
         {
-            _unitOfWork = new UnitOfWork(new ApplicationDbContext());
+            _unitOfWork = unitOfWork;
             Map = new MyMapping();
         }
 
@@ -26,16 +25,13 @@ namespace AcademicManagement.Application.Services.Courses
 
             if (item.CourseDetailDto != null)
             {
-                newCourseDetails.AddRange(Map.MapCourseDetailDtoToCourseDetail(item.CourseDetailDto));
-
-              
+                newCourseDetails.AddRange(Map.MapCourseDetailDtoToCourseDetail(item.CourseDetailDto));              
             }
 
             var newCourse = new Course(item.Name, item.Description)
             {
                 CourseDetails = newCourseDetails
             };
-
 
             _unitOfWork.Courses.Add(newCourse);
 
@@ -64,7 +60,10 @@ namespace AcademicManagement.Application.Services.Courses
         public List<CourseDto> Find(string query)
         {
             var Courses = _unitOfWork.Courses.Find(query).ToList();
-            return Mapper.Map<List<Course>, List<CourseDto>>(Courses);
+            var cursoDto = Courses.ToList()
+             .Select(c => Map.MapCourseToCourseDto(c)).ToList();
+
+            return cursoDto;
         }
 
         public List<CourseDto> GetAll()
@@ -74,8 +73,7 @@ namespace AcademicManagement.Application.Services.Courses
             var cursoDto = Courses.ToList()
               .Select(c=> Map.MapCourseToCourseDto(c) ).ToList();
 
-            return cursoDto;
-               // Mapper.Map<List<Course>, List<CourseDto>>(Courses);
+            return cursoDto;             
         }
 
         public CourseDto GetById(int id)
@@ -84,12 +82,11 @@ namespace AcademicManagement.Application.Services.Courses
             var CourseDto = new CourseDto();
             if (Course == null)
             {
-                //CourseDto.ErrorMessage = "Student not Found";
+                CourseDto.ErrorMessage = "Student not Found";
                 return CourseDto;
             }
 
-            return Map.MapCourseToCourseDto(Course);
-                //Mapper.Map<Course, CourseDto>(Course);
+            return Map.MapCourseToCourseDto(Course);                
         }
 
         public CourseDto Update(int id, CourseDto item)
@@ -98,17 +95,12 @@ namespace AcademicManagement.Application.Services.Courses
 
             if (CourseOnDB == null)
             {
-                //item.ErrorMessage = "StudentNotFound";
+                item.ErrorMessage = "Course NotFound";
                 return item;
             }
-
+            CourseOnDB.UpdateCourse(item.Name, item.Description);
             AddCourseDetail(CourseOnDB, item.CourseDetailDto);
             RemoveCourseDetail(CourseOnDB, item.CourseDetailDto);
-           
-
-            CourseOnDB.Name = item.Name;
-            CourseOnDB.Description = item.Description;
-
             _unitOfWork.Commit();
 
             return item;
@@ -117,15 +109,12 @@ namespace AcademicManagement.Application.Services.Courses
         private void RemoveCourseDetail(Course courseOnDB, List<CourseDetailDto> courseDetail)
         {
 
-            
-
             var itemToRemove = courseOnDB.CourseDetails
                 .Where(bd => !courseDetail.Any(dto => dto.AsignatureId == bd.AsignatureId)).ToList();
 
             foreach (var item in itemToRemove)
             {
-                _unitOfWork.CourseDetails.Delete(item);
-               // courseOnDB.CourseDetails.Remove(item);
+                _unitOfWork.CourseDetails.Delete(item);              
             }  
 
         }

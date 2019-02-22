@@ -1,5 +1,7 @@
 ﻿using AcademicManagement.Application.DTOs;
 using AcademicManagement.Application.Services.Asignatures;
+using System.Collections.Generic;
+using System.Threading;
 using System.Web.Http;
 
 namespace AcademicManagement.Host.Controllers
@@ -13,11 +15,14 @@ namespace AcademicManagement.Host.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get()
+        public IHttpActionResult Get( string query=null)
         {
-            var resulto = _asignatureAppService.GetAll();
 
-            return Ok(resulto);
+            var resultado = new List<AsignatureDto>();
+
+            resultado = query == null ? _asignatureAppService.GetAll() : _asignatureAppService.Find(query);           
+
+            return Ok(resultado);
         }
         [HttpGet]
         public IHttpActionResult GetById(int id)

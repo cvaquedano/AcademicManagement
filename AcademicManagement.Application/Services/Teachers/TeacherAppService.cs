@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using AcademicManagement.Application.DTOs;
 using AcademicManagement.Domain.Core;
 using AcademicManagement.Domain.Entities;
 using AcademicManagement.Persistence;
-using AutoMapper;
+
 
 namespace AcademicManagement.Application.Services.Teachers
 {
@@ -56,14 +55,30 @@ namespace AcademicManagement.Application.Services.Teachers
         public List<TeacherDto> Find(string query)
         {
             var teachers = _unitOfWork.Teachers.Find(query).ToList();
-            return Mapper.Map<List<Teacher>, List<TeacherDto>>(teachers);
+            return teachers.Select(teacher => new TeacherDto
+            {
+                TeacherId = teacher.TeacherId,
+                FirstName = teacher.FirstName,
+                LastName=teacher.LastName,
+                BirthDate=teacher.BirthDate,
+                Gender = teacher.Gender
+            })
+               .ToList();
         }
 
         public List<TeacherDto> GetAll()
         {
             var teachers = _unitOfWork.Teachers.GetAll().ToList();
 
-            return Mapper.Map<List<Teacher>, List<TeacherDto>>(teachers);
+            return teachers.Select(teacher => new TeacherDto
+            {
+                TeacherId = teacher.TeacherId,
+                FirstName = teacher.FirstName,
+                LastName = teacher.LastName,
+                BirthDate = teacher.BirthDate,
+                Gender = teacher.Gender
+            })
+               .ToList();
         }
 
         public TeacherDto GetById(int id)
@@ -72,11 +87,17 @@ namespace AcademicManagement.Application.Services.Teachers
             var teacherDto = new TeacherDto();
             if (teacher == null)
             {
-                //studentDto.ErrorMessage = "Student not Found";
+                teacherDto.ErrorMessage = "Student not Found";
                 return teacherDto;
             }
 
-            return Mapper.Map<Teacher, TeacherDto>(teacher);
+            teacherDto.TeacherId = teacher.TeacherId;
+            teacherDto.FirstName = teacher.FirstName;
+            teacherDto.LastName = teacher.LastName;
+            teacherDto.BirthDate = teacher.BirthDate;
+            teacherDto.Gender = teacher.Gender;           
+
+            return teacherDto;
         }
 
         public TeacherDto Update(int id, TeacherDto item)
@@ -85,7 +106,7 @@ namespace AcademicManagement.Application.Services.Teachers
 
             if (teacherOnDB == null)
             {
-                //item.ErrorMessage = "StudentNotFound";
+                item.ErrorMessage = "Teacher NotFound";
                 return item;
             }
             teacherOnDB.FirstName = item.FirstName;

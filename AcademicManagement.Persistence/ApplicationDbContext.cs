@@ -1,4 +1,5 @@
 ﻿using AcademicManagement.Domain.Entities;
+using AcademicManagement.Domain.Entities.AcademicPeriods;
 using AcademicManagement.Domain.Entities.Courses;
 using AcademicManagement.Domain.Repository;
 using System.Data.Entity;
@@ -12,6 +13,9 @@ namespace AcademicManagement.Persistence
         public DbSet<Asignature> Asignatures { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<CourseDetail> CourseDetails { get; set; }
+        public DbSet<AcademicPeriod> AcademicPeriods { get; set; }
+        public DbSet<AcademicPeriodDetail> AcademicPeriodDetails { get; set; }
+        public DbSet<AcademicPeriodCourseAsignature> AcademicPeriodCourseAsignatures { get; set; }
 
         public ApplicationDbContext() : base("AcademicManagementConnection")
         {

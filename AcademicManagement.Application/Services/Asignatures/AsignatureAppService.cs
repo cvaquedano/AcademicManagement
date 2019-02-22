@@ -5,7 +5,7 @@ using AcademicManagement.Application.DTOs;
 using AcademicManagement.Domain.Core;
 using AcademicManagement.Domain.Entities;
 using AcademicManagement.Persistence;
-using AutoMapper;
+
 
 namespace AcademicManagement.Application.Services.Asignatures
 {
@@ -52,13 +52,22 @@ namespace AcademicManagement.Application.Services.Asignatures
         public List<AsignatureDto> Find(string query)
         {
             var asignatures = _unitOfWork.Asignatures.Find(query).ToList();
-            return Mapper.Map<List<Asignature>, List<AsignatureDto>>(asignatures);
+            return asignatures.Select(asignature => new AsignatureDto {
+                AsignatureId = asignature.AsignatureId,
+                Name =asignature.Name,
+                Description =asignature.Description })
+                .ToList();
         }
 
         public List<AsignatureDto> GetAll()
         {
             var asignatures = _unitOfWork.Asignatures.GetAll().ToList();
-            return Mapper.Map<List<Asignature>, List<AsignatureDto>>(asignatures);
+            return asignatures.Select(asignature => 
+            new AsignatureDto {
+                AsignatureId = asignature.AsignatureId,
+                Name = asignature.Name,
+                Description = asignature.Description })
+                .ToList();
         }
 
         public AsignatureDto GetById(int id)
@@ -67,11 +76,15 @@ namespace AcademicManagement.Application.Services.Asignatures
             var asignatureDto = new AsignatureDto();
             if (asignature == null)
             {
-                //studentDto.ErrorMessage = "Student not Found";
+                asignatureDto.ErrorMessage = "Asignature not Found";
                 return asignatureDto;
             }
 
-            return Mapper.Map<Asignature, AsignatureDto>(asignature);
+            asignatureDto.AsignatureId = asignature.AsignatureId;
+            asignatureDto.Name = asignature.Name;
+            asignatureDto.Description = asignature.Description;
+
+            return asignatureDto;
         }
 
         public AsignatureDto Update(int id, AsignatureDto item)

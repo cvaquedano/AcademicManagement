@@ -15,22 +15,7 @@ namespace AcademicManagement.Host.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
-            var resulto = _courseAppService.GetAll();
-
-            var courseDto = new CourseDto
-            {
-                Name = "PRueba3",
-                Description = "Prueba tres Editada",
-                CourseDetailDto = new System.Collections.Generic.List<CourseDetailDto>
-                {
-                    new CourseDetailDto{AsignatureId=2},
-                     new CourseDetailDto{AsignatureId=4}
-                }
-                
-            };
-
-
-            var resulto1 = _courseAppService.Update(3, courseDto);
+            var resulto = _courseAppService.GetAll();         
 
             return Ok(resulto);
         }

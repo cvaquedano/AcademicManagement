@@ -15,7 +15,11 @@ namespace AcademicManagement.Persistence
         public ICourseRepository Courses { get; private set; }
         public ICourseDetailsRepository CourseDetails { get; private set; }
 
+        public IAcademicPeriodRepository AcademicPeriod { get; private set; }
 
+        public IAcademicPeriodDetailRepository AcademicPeriodDetail { get; private set; }
+
+        public IAcademicPeriodCourseAsignatureRepository AcademicPeriodCourseAsignature { get; private set; }
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -25,6 +29,12 @@ namespace AcademicManagement.Persistence
             Asignatures = new AsignatureRepository(context);
             Courses = new CourseRepository(context);
             CourseDetails = new CourseDetailsRepository(context);
+
+            Courses = new CourseRepository(context);
+            CourseDetails = new CourseDetailsRepository(context);
+            AcademicPeriod = new AcademicPeriodRepository(context);
+            AcademicPeriodDetail = new AcademicPeriodDetailRepository(context);
+            AcademicPeriodCourseAsignature = new AcademicPeriodCourseAsignatureRepository(context);
 
         }
 

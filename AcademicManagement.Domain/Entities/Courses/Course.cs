@@ -27,6 +27,28 @@ namespace AcademicManagement.Domain.Entities.Courses
 
         }
 
+        public void UpdateCourse(string name, string description)
+        {
+            Name = name;
+            Description = description;
+        }
+
+        public void AddDetail(CourseDetail detail)
+        {
+            CourseDetails.Add(detail);
+        }
+
+        public void RemoveDetail(CourseDetail detail)
+        {
+            CourseDetails.Remove(detail);
+        }
+       
+        public void RemoveDetail(int detailId)
+        {
+            var courseDetail= CourseDetails.FirstOrDefault(d => d.CourseDetailId == detailId);
+            CourseDetails.Remove(courseDetail);
+        }
+
         public List<CourseDetail> ObtenerCursoDetalle()
         {
             if (CourseDetails != null && CourseDetails.Any())

@@ -1,5 +1,6 @@
 ﻿using AcademicManagement.Application.DTOs;
 using AcademicManagement.Application.Services.Students;
+using System.Threading;
 using System.Web.Http;
 
 namespace AcademicManagement.Host.Controllers
@@ -15,6 +16,7 @@ namespace AcademicManagement.Host.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
+          
             var resulto = _studentAppService.GetAll();
 
             return Ok(resulto);

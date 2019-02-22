@@ -10,6 +10,10 @@ namespace AcademicManagement.Domain.Core
         ICourseRepository Courses { get; }
         ICourseDetailsRepository CourseDetails { get; }
 
+        IAcademicPeriodRepository AcademicPeriod { get; }
+        IAcademicPeriodDetailRepository AcademicPeriodDetail { get; }
+        IAcademicPeriodCourseAsignatureRepository AcademicPeriodCourseAsignature { get; }
+
 
         void Commit();
     }

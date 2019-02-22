@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AcademicManagement.Application.DTOs.Core
+namespace AcademicManagement.Domain.Repository
 {
-    public class BaseDto
+    public interface IAcademicPeriodCourseAsignatureRepository
     {
-       public string ErrorMessage { get; set; }
     }
 }

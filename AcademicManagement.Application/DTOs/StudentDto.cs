@@ -5,6 +5,8 @@ namespace AcademicManagement.Application.DTOs
 {
     public class StudentDto:PersonDto
     {
+
+
         public int StudentId { get; set; }
        
         public bool IsRightHanded { get; set; }
@@ -25,6 +27,19 @@ namespace AcademicManagement.Application.DTOs
             }
         }
 
+        public StudentDto()
+        {
 
+        }
+
+        public StudentDto(int id, string firstName, string lastName, DateTime birthDate, bool gender, bool isRightHanded)
+        {
+            StudentId = id;
+            FirstName = firstName;
+            LastName = lastName;
+            BirthDate = birthDate;
+            Gender = gender;
+            IsRightHanded = isRightHanded;
+        }
     }
 }

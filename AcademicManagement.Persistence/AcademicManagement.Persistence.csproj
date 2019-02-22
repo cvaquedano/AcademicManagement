@@ -68,8 +68,15 @@
     <Compile Include="Migrations\201901092243483_addcoursesTables.Designer.cs">
       <DependentUpon>201901092243483_addcoursesTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902192042141_AddAcademicPeriodTablle.cs" />
+    <Compile Include="Migrations\201902192042141_AddAcademicPeriodTablle.Designer.cs">
+      <DependentUpon>201902192042141_AddAcademicPeriodTablle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AcademicPeriodCourseAsignatureRepository.cs" />
+    <Compile Include="Repositories\AcademicPeriodDetailRepository.cs" />
+    <Compile Include="Repositories\AcademicPeriodRepository.cs" />
     <Compile Include="Repositories\AsignatureRepository.cs" />
     <Compile Include="Repositories\CourseDetailsRepository.cs" />
     <Compile Include="Repositories\CourseRepository.cs" />
@@ -102,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901092243483_addcoursesTables.resx">
       <DependentUpon>201901092243483_addcoursesTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902192042141_AddAcademicPeriodTablle.resx">
+      <DependentUpon>201902192042141_AddAcademicPeriodTablle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

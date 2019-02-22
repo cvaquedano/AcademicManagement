@@ -37,7 +37,9 @@ namespace AcademicManagement.Persistence.Repositories
 
         public Course GetById(int id)
         {
-            return _context.Courses.FirstOrDefault(a => a.CourseId == id);
+            return _context.Courses
+                .Include(detail => detail.CourseDetails.Select(a => a.Asignature))
+                .FirstOrDefault(a => a.CourseId == id);
         }
 
       
